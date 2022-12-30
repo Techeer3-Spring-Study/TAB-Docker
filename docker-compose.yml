@@ -1,6 +1,20 @@
 version: '3'
 
 services:
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: tab
+      MYSQL_USER: tab
+      MYSQL_ROOT_PASSWORD: tab
+    command: # 명령어 실행
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
   backend:
     build: .
     container_name: backend
